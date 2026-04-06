@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The New Valdoria — Serveur Minecraft</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --am:#9d6ce4;--am-light:#c9a7f5;--am-dark:#5b3d8c;--am-glow:#b47fff;
+  --gold:#f0c040;--gold-dark:#b88a10;
+  --dark:#070511;--dark2:#0f0b1e;--dark3:#17112b;
+  --panel:rgba(15,11,30,0.95);--text:#e8dff8;--muted:#7a6a9a;
+  --green:#4ade80;--red:#f87171;
+  --border:rgba(157,108,228,0.2);--border-b:rgba(157,108,228,0.5);
+  --discord:#5865F2;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text);font-family:'Nunito',sans-serif;min-height:100vh;overflow-x:hidden;}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 90% 70% at 15% 5%,rgba(90,35,170,.28) 0%,transparent 55%),
+  radial-gradient(ellipse 60% 80% at 85% 85%,rgba(70,20,140,.2) 0%,transparent 55%);}
 
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:62px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 2rem;
+  background:rgba(7,5,17,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nlogo{font-family:'Cinzel Decorative',serif;font-size:.95rem;color:var(--am-light);cursor:pointer;}
+.nlogo span{color:var(--gold);}
+.nctr{display:flex;gap:1.5rem;}
+.nlink{background:none;border:none;color:var(--muted);cursor:pointer;font-family:'Cinzel',serif;font-size:.72rem;text-transform:uppercase;transition:color .2s;}
+.nlink:hover{color:var(--am-light);}
+
+.page{position:relative;z-index:2;}
+#hs{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 1.5rem 5rem;}
+.hgem{width:130px;height:130px;margin-bottom:2rem;filter:drop-shadow(0 0 32px rgba(157,108,228,.75));animation:gf 3.5s ease-in-out infinite;}
+@keyframes gf{0%,100%{transform:translateY(0) rotate(-4deg);}50%{transform:translateY(-18px) rotate(4deg);}}
+
+h1.ht{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,6vw,4.2rem);color:#fff;margin-bottom:.4rem;}
+.hsn{font-family:'Cinzel',serif;font-size:clamp(.9rem,2.5vw,1.4rem);color:var(--am-light);text-transform:uppercase;}
+.hd{max-width:500px;margin:1.5rem auto 2rem;color:var(--muted);line-height:1.75;}
+
+.hip{display:inline-flex;align-items:center;gap:.7rem;background:rgba(157,108,228,0.1);border:1px solid var(--border-b);border-radius:8px;padding:.55rem 1.3rem;font-family:'Cinzel',serif;color:var(--am-light);cursor:pointer;margin-bottom:2.2rem;transition: 0.3s;}
+.hip:hover{background:rgba(157,108,228,0.2);box-shadow:0 0 20px rgba(157,108,228,0.4);}
+
+.hbtns{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;}
+.bp{background:linear-gradient(135deg,var(--am-dark),var(--am));color:#fff;border:none;padding:.85rem 1.9rem;border-radius:8px;font-family:'Cinzel',serif;cursor:pointer;box-shadow:0 0 22px rgba(157,108,228,0.4);}
+.bdiscord{background:var(--discord);color:#fff;text-decoration:none;padding:.85rem 1.9rem;border-radius:8px;font-family:'Cinzel',serif;display:flex;align-items:center;transition:0.3s;}
+.bdiscord:hover{filter:brightness(1.1);transform:translateY(-2px);}
+
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:999;background:var(--dark2);border:1px solid var(--am);padding:1rem;border-radius:8px;transform:translateX(150%);transition:0.5s;}
+.toast.on{transform:translateX(0);}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<nav>
+  <div class="nlogo">The New <span>Valdoria</span></div>
+  <div class="nctr">
+    <button class="nlink">Accueil</button>
+    <button class="nlink">Boutique</button>
+    <button class="nlink">Règlement</button>
+  </div>
+  <a href="https://discord.gg/vGBAVhcfWq" target="_blank" style="text-decoration:none">
+    <button style="background:var(--discord); color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; font-family:'Cinzel'">Discord</button>
+  </a>
+</nav>
+
+<div class="page">
+  <section id="hs">
+    <svg class="hgem" viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="65,6 112,48 95,140 35,140 18,48" fill="#9d6ce4"/>
+    </svg>
+    <div class="heb">✦ Serveur Minecraft Survie ✦</div>
+    <h1 class="ht">THE NEW</h1>
+    <span class="hsn">Valdoria</span>
+    <p class="hd">Rejoins un univers de survie enrichi d'un système d'économie, de caisses Améthyste et d'un hôtel des ventes entre joueurs.</p>
+    
+    <div class="hip" onclick="copyIP('151.240.100.21:25582')">
+        🔮 <span>151.240.100.21:25582</span> 
+        <span style="opacity:.55;font-size:.78rem;">📋 Copier</span>
+    </div>
+
+    <div class="hbtns">
+      <button class="bp">🎁 Voir les caisses</button>
+      
+      <a href="https://discord.gg/vGBAVhcfWq" target="_blank" class="bdiscord">
+        <svg style="width:20px;margin-right:10px" viewBox="0 0 24 24" fill="white"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        Rejoindre Discord
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="tst">IP copiée avec succès !</div>
+
+<script>
+function copyIP(ip) {
+  navigator.clipboard.writeText(ip);
+  const t = document.getElementById('tst');
+  t.classList.add('on');
+  setTimeout(() => t.classList.remove('on'), 2500);
+}
+</script>
+</body>
+</html>
